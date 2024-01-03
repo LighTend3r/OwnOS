@@ -17,4 +17,4 @@ sudo apt-get install build-essential nasm xorriso grub-pc-bin bochs bochs-sdl
 make run
 ```
 
-For this moment, juste run make an error, but if you press "c" on Bochs, you can see "Hello, World!"
+For this moment, just run make an error, but if you press "c" on Bochs, you can see "Hello, World!"
