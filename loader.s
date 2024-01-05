@@ -30,13 +30,6 @@ loader:                              ; the loader label (defined as entry point 
     ;mov eax, 0xCAFEBABE              ; place the number 0xCAFEBABE in the register eax
     ;mov word [0x000B8000], 0x4128    ; Display the letter "A" with green foreground and darkgrey background
 
-
-    extern write
-    push dword 13
-    push dword myString
-    call write
-    add esp, 8
-
     ;extern fb_write_cell
     ;
     ;push dword 2;
@@ -49,6 +42,28 @@ loader:                              ; the loader label (defined as entry point 
     ;
     ;push 1;
     ;call fb_move_cursor
+
+    ; Ecriture de Hello, world! dans le frambuffer
+    ;extern write
+    ;push dword 13
+    ;push dword myString
+    ;call write
+    ;add esp, 8
+
+    ; Initialisation du port COM 1 (0x3F8)
+    extern serial_init
+    push dword 0x3F8
+    call serial_init
+    add esp, 4
+
+    ; Ecriture dans le COM1 (0x3F8)
+    extern serial_write
+    push dword 0x3F8
+    push dword 13
+    push dword myString
+    call serial_write
+    add esp, 12
+
 
 
 

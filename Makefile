@@ -27,10 +27,10 @@ os.iso: kernel.elf
 run: os.iso
 	bochs -f bochsrc.txt -q
 
-%.o: %.c
+%.o: %.c # Permet de compiler tous les fichiers .c
 	$(CC) $(CFLAGS)  $< -o $@
 
-%.o: %.s
+%.o: %.s # Permet de compiler tous les fichiers .s
 	$(AS) $(ASFLAGS) $< -o $@
 
 clean:
